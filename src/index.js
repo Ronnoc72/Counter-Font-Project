@@ -1,5 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
+// Connor Paxman
+// 10 / 24 / 2020
+// font project 1.0
 
 const arr = ["bold", "normal"];
 const fonts = ["Lato", "sans-serif"];
@@ -9,10 +12,17 @@ var font_index = 0;
 class Num extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { count: 12, weight: "normal", family: "Helvetica" };
+    this.state = { count: 12, weight: "normal", family: "sans-serif" };
   }
   increase = () => {
-    this.setState({ count: this.state.count + 1 });
+    if (this.state.count >= 80) {
+      this.setState({ count: (this.state.count = 80) });
+    } else {
+      this.setState({ count: this.state.count + 1 });
+    }
+    if (this.state.count >= 80) {
+      this.setState({ count: (this.state.count = 80) });
+    }
   };
 
   decrease = () => {
@@ -30,7 +40,14 @@ class Num extends React.Component {
   };
 
   increaseLong = () => {
-    this.setState({ count: this.state.count + 10 });
+    if (this.state.count >= 80) {
+      this.setState({ count: (this.state.count = 80) });
+    } else {
+      this.setState({ count: this.state.count + 10 });
+    }
+    if (this.state.count >= 80) {
+      this.setState({ count: (this.state.count = 80) });
+    }
   };
 
   weightChange = () => {
@@ -50,6 +67,8 @@ class Num extends React.Component {
   };
 
   render() {
+    var input = document.getElementById("user").value;
+
     var myStyle = {
       fontSize: this.state.count,
       fontWeight: this.state.weight,
@@ -62,10 +81,20 @@ class Num extends React.Component {
         <button onClick={this.increase}>+</button>
         <button onClick={this.decreaseLong}>--</button>
         <button onClick={this.increaseLong}>++</button>
-        <button onClick={this.weightChange}>Try different weights</button>
-        <button onClick={this.changeFont}>Change Fonts</button>
+        <tabel>
+          <tr>
+            <button onClick={this.weightChange}>Try different weights</button>
+          </tr>
+          <tr>{this.state.weight}</tr>
+        </tabel>
+        <tabel>
+          <tr>
+            <button onClick={this.changeFont}>Change Fonts</button>
+          </tr>
+          <tr>{this.state.family}</tr>
+        </tabel>
         <p style={myStyle}>Font Size: {this.state.count}</p>
-        <p style={myStyle}>The quick brown fox jumped over the lazy dog</p>
+        <p style={myStyle}>{input}</p>
       </div>
     );
   }
